@@ -35,39 +35,79 @@ class MyHomePage extends StatelessWidget {
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
                 'assets/images/persian_flutter.jpeg',
                 scale: 20,
               ),
-              const Text(
-                'Persian Flutter community presents',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54,
+              const Gap(8),
+              const Expanded(
+                child: Text(
+                  'CI/CD Integration with Firebase Hosting and Telegram Bot',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
                 ),
               )
             ],
           ),
           const Gap(25),
           const Text(
-            'Here we are learning how to implement a Github workflow in Flutter projects that provide us the APK file and a free domain which can see the web app of the project there, after merge with main branch.',
+            '''  This project demonstrates the integration of Continuous Integration/Continuous Deployment (CI/CD) with Firebase Hosting and Telegram Bot.
+
+  By using this setup, you can automate the build, test, and deployment process for your Flutter apps, and receive real-time notifications about the deployment status.
+            ''',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w400,
               color: Colors.black87,
             ),
           ),
-          const Gap(15),
+          // const Gap(8),
           const Text(
-            'Please follow the Persian Flutter community to know more...',
+            'Dive Deeper - Explore Full Documentation',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w300,
               color: Colors.black87,
             ),
           ),
+          const Gap(5),
+          ElevatedButton.icon(
+            onPressed: () {
+              _visitWebsite('github.com/mahdiyarz/persian_flutter_ci_cd');
+            },
+            style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromRGBO(24, 23, 23, 1)),
+            label: const Text(
+              'View Documentation',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: Colors.white,
+              ),
+            ),
+            icon: SvgPicture.asset(
+              'assets/icons/github.svg',
+              colorFilter:
+                  const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+            ),
+          ),
+          const Gap(15),
+          const Divider(),
+          const Gap(10),
+          const Text(
+            'Join the Persian Flutter Community:',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w300,
+              color: Colors.black87,
+            ),
+          ),
+          const Gap(5),
           Row(
             children: [
               IconButton(
@@ -81,6 +121,7 @@ class MyHomePage extends StatelessWidget {
                     colorFilter:
                         const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   )),
+              const Gap(3),
               IconButton(
                   onPressed: () {
                     _visitWebsite('t.me/persian_flutter');
@@ -92,6 +133,7 @@ class MyHomePage extends StatelessWidget {
                     colorFilter:
                         const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   )),
+              const Gap(3),
               IconButton(
                   onPressed: () {
                     _visitWebsite('www.youtube.com/@PersianFlutter');
@@ -100,17 +142,6 @@ class MyHomePage extends StatelessWidget {
                       backgroundColor: const Color.fromRGBO(255, 0, 0, 1)),
                   icon: SvgPicture.asset(
                     'assets/icons/youtube.svg',
-                    colorFilter:
-                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                  )),
-              IconButton(
-                  onPressed: () {
-                    _visitWebsite('github.com/mahdiyarz/persian_flutter_ci_cd');
-                  },
-                  style: IconButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(24, 23, 23, 1)),
-                  icon: SvgPicture.asset(
-                    'assets/icons/github.svg',
                     colorFilter:
                         const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   )),
