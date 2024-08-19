@@ -1,56 +1,92 @@
+# This is the name of the workflow. It will appear in the GitHub Actions UI.
 name: Build Web app and APK files
 
+# The 'on' section defines the events that trigger the workflow.
+# Here, the workflow is triggered on pushes to any tag that matches the pattern 'dev*.*.*'.
 on:
   push:
     tags:
       - 'dev*.*.*'
 
+# 'env' defines environment variables that are accessible throughout the workflow.
+# APK_PATH is used to specify the path where the APK file will be generated.
 env:
   APK_PATH: build/app/outputs/flutter-apk/app-release.apk
 
+# 'jobs' defines a collection of tasks that run in parallel or sequentially as part of this workflow.
 jobs:
+  # This is the name of the job. It can be anything descriptive.
   build-web:
+    # 'runs-on' specifies the type of virtual machine (runner) on which the job will execute.
+    # 'ubuntu-latest' is a VM running the latest Ubuntu OS.
     runs-on: ubuntu-latest
 
+    # 'steps' defines the individual tasks that make up the job. Each step is executed sequentially.
     steps:
+    # This step checks out the repository's code to the runner.
+    # It uses the 'actions/checkout' action, which is a standard action provided by GitHub.
     - uses: actions/checkout@v2
 
+    # This step sets up Java on the runner.
+    # It uses the 'actions/setup-java' action, and specifies that Java 17 should be installed.
     - name: Set up Java
       uses: actions/setup-java@v1
       with:
         java-version: '17.x' 
 
+    # This step installs Flutter on the runner.
+    # The 'subosito/flutter-action' action is used, specifying the stable channel and version 3.22.3.
+    # This action allows you to set up different versions or channels of Flutter.
     - name: Set up Flutter
       uses: subosito/flutter-action@v1
       with:
         channel: 'stable'
-        flutter-version: '3.22.3' # becareful about your current flutter version
+        flutter-version: '3.22.3' # Make sure this matches the Flutter version you are using locally.
 
+    # This step installs the Flutter project's dependencies.
+    # It runs the 'flutter pub get' command, which fetches the packages listed in pubspec.yaml.
     - name: Install dependencies
       run: flutter pub get
 
+    # This step enables web support for Flutter.
+    # It runs the 'flutter config --enable-web' command, which configures Flutter to build for the web.
     - name: Enable Web
       run: flutter config --enable-web
 
+    # This step builds the web version of the Flutter app.
+    # The '--web-renderer canvaskit' flag enables better performance on mobile browsers.
     - name: Build Web
-      run: flutter build web --web-renderer canvaskit # enable convaskit for mobile browsers
+      run: flutter build web --web-renderer canvaskit
   
+    # This step lists the contents of the 'build/web' directory to verify the build output.
+    # It runs the 'ls' command to list the files in the specified directory.
     - run: ls build/web
     
+    # This step deploys the web build to Firebase Hosting.
+    # It uses the 'lowply/deploy-firebase' action and requires a Firebase token and project name.
+    # These values are stored in GitHub secrets for security.
     - uses: lowply/deploy-firebase@v0.0.5
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         FIREBASE_PROJECT: ${{ secrets.FIREBASE_PROJECT_NAME }}
 
+    # This step builds the APK for Android.
+    # It runs the 'flutter build apk' command, which creates a release version of the APK.
     - name: Build APK
       run: flutter build apk
 
+    # This step uploads the generated APK file as an artifact.
+    # It uses the 'actions/upload-artifact' action to make the APK available for download in the workflow summary.
+    # The 'name' input specifies the artifact's name, and 'path' specifies the file location.
     - name: Upload APK artifact
       uses: actions/upload-artifact@v2
       with:
         name: app-release
         path: ${{ env.APK_PATH }}
     
+    # This step sends a success message to Telegram if the build and deployment succeed.
+    # The 'if: success()' condition ensures this step only runs if the previous steps were successful.
+    # The 'appleboy/telegram-action' action sends a Telegram message, including the release note and APK file.
     - name: Send Message to Telegram on Success
       if: success()
       uses: appleboy/telegram-action@master
@@ -69,7 +105,9 @@ jobs:
           
           ${{ github.event.head_commit.url }}
 
-
+    # This step sends a failure message to Telegram if any of the previous steps fail.
+    # The 'if: failure()' condition ensures this step only runs if something goes wrong.
+    # The message includes details about the failed deployment.
     - name: Send Message to Telegram on Failure
       if: failure()
       uses: appleboy/telegram-action@master
