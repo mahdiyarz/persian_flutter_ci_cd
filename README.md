@@ -94,7 +94,7 @@ This project demonstrates the integration of Firebase and Telegram in a Flutter 
 
 - Run your workflow and enjoy!
 
-| <img src="https://github.com/mahdiyarz/persian_flutter_ci_cd/blob/main/doc/images/telegram_group_screenshot.jpg?raw=true" width='250' alt="Telegram Group Screenshot" /> |
+| <img src="https://github.com/mahdiyarz/persian_flutter_ci_cd/blob/main/doc/images/telegram_group_screenshot.png?raw=true" width='250' alt="Telegram Group Screenshot" /> |
 | :------: | 
 | Final result in Telegram group |
 
