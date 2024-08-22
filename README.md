@@ -2,6 +2,13 @@
 
 This project demonstrates the integration of Firebase and Telegram in a Flutter application, along with setting up CI/CD using GitHub Actions. The goal is to provide a template for developers who want to implement similar features in their Flutter projects.
 
+## Example App
+
+| <img src="https://github.com/mahdiyarz/persian_flutter_ci_cd/blob/main/doc/images/app_screenshot.jpg?raw=true" width='250' alt="App Screenshot" /> | <img src="https://github.com/mahdiyarz/persian_flutter_ci_cd/blob/main/doc/images/web_app_screenshot.jpg?raw=true" width='250' alt="Web App Screenshot" /> |
+| :------: | :------: | 
+| App Screenshot | Web App Screenshot |
+| **Web App Link** |  [persian-flutter-ci-cd-917ee.web.app](https://persian-flutter-ci-cd-917ee.web.app) |
+
 ## Features
 
 - **Firebase Integration**: Firebase Hosting are integrated into this Flutter project.
@@ -86,6 +93,10 @@ This project demonstrates the integration of Firebase and Telegram in a Flutter 
 ### Final Step: Run the Workflow
 
 - Run your workflow and enjoy!
+
+| <img src="https://github.com/mahdiyarz/persian_flutter_ci_cd/blob/main/doc/images/telegram_group_screenshot.jpg?raw=true" width='250' alt="Telegram Group Screenshot" /> |
+| :------: | 
+| Final result in Telegram group |
 
 ## Social Links
 
