@@ -3,10 +3,18 @@ name: Build Web app and APK files
 
 # The 'on' section defines the events that trigger the workflow.
 # Here, the workflow is triggered on pushes to any tag that matches the pattern 'dev*.*.*'.
+# The 'branches' section defines the branches that trigger the workflow.
+# In this case, the workflow is triggered on pushes to the 'main' branch.
+# For more information, see: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#on
 on:
   push:
     tags:
       - 'dev*.*.*'
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 # 'env' defines environment variables that are accessible throughout the workflow.
 # APK_PATH is used to specify the path where the APK file will be generated.
