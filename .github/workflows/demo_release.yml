@@ -12,9 +12,9 @@ on:
       - 'dev*.*.*'
     branches:
       - develop
-  pull_request:
-    branches:
-      - main
+  # pull_request:
+  #   branches:
+  #     - main
 
 # 'env' defines environment variables that are accessible throughout the workflow.
 # APK_PATH is used to specify the path where the APK file will be generated.
@@ -87,7 +87,7 @@ jobs:
     # It uses the 'actions/upload-artifact' action to make the APK available for download in the workflow summary.
     # The 'name' input specifies the artifact's name, and 'path' specifies the file location.
     - name: Upload APK artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: app-release
         path: ${{ env.APK_PATH }}
