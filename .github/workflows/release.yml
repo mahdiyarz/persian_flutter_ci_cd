@@ -11,6 +11,9 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write  # Ensure we have permission to write to contents (releases)
+
 # 'env' defines environment variables that are accessible throughout the workflow.
 # APK_PATH is used to specify the path where the APK file will be generated.
 env:
