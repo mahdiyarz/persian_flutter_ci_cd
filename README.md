@@ -2,6 +2,9 @@
 
 This project demonstrates the integration of Firebase and Telegram in a Flutter application, along with setting up CI/CD using GitHub Actions. The goal is to provide a template for developers who want to implement similar features in their Flutter projects.
 
+**Watch the full presentation on YouTube:** [CI/CD Integration Demo for Flutter](https://www.youtube.com/watch?v=qSSY8uS7Zpo)
+
+
 ## Example App
 
 | <img src="https://github.com/mahdiyarz/persian_flutter_ci_cd/blob/main/doc/images/app_screenshot.jpg?raw=true" width='250' alt="App Screenshot" /> | <img src="https://github.com/mahdiyarz/persian_flutter_ci_cd/blob/main/doc/images/web_app_screenshot.jpg?raw=true" width='250' alt="Web App Screenshot" /> |
