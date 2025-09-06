@@ -101,6 +101,9 @@ This project demonstrates the integration of Firebase and Telegram in a Flutter 
 | :------: | 
 | Final result in Telegram group |
 
+## Reference
+CI/CD setup inspired by Atuoha Anthony’s guide on [freeCodeCamp](https://www.freecodecamp.org/news/how-to-deploy-a-flutter-web-app-to-firebase-hosting-with-github-actions/) for a step-by-step walkthrough.
+
 ## Social Links
 
 - **LinkedIn**: [My LinkedIn Profile](https://www.linkedin.com/in/mahdiyar-arbabzi/)
